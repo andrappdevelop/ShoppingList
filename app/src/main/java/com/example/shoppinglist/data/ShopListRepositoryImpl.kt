@@ -1,5 +1,6 @@
 package com.example.shoppinglist.data
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.shoppinglist.domain.ShopItem
@@ -14,7 +15,7 @@ object ShopListRepositoryImpl : ShopListRepository {
     private var autoIncrementId = 0
 
     init {
-        for (i in 0 until 100) {
+        for (i in 0 until 1000) {
             val item = ShopItem("Name $i", i, Random.nextBoolean())
             addShopItem(item)
         }
