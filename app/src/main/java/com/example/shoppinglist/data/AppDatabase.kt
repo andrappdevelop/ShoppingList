@@ -27,9 +27,7 @@ abstract class AppDatabase : RoomDatabase() {
                     application,
                     AppDatabase::class.java,
                     DATA_BASE_NAME
-                )
-                    .allowMainThreadQueries()
-                    .build()
+                ).build()
                 INSTANCE = dataBase
                 return dataBase
             }
