@@ -1,4 +1,4 @@
-package com.example.shoppinglist.presentation
+package com.example.shoppinglist
 
 import android.app.Application
 import com.example.shoppinglist.di.DaggerApplicationComponent

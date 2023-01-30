@@ -9,6 +9,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.example.shoppinglist.R
+import com.example.shoppinglist.ShopApplication
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import javax.inject.Inject
 
