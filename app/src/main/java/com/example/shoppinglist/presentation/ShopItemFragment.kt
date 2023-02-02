@@ -1,6 +1,8 @@
 package com.example.shoppinglist.presentation
 
+import android.content.ContentValues
 import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -16,6 +18,7 @@ import com.example.shoppinglist.ShopApplication
 import com.example.shoppinglist.domain.ShopItem
 import com.google.android.material.textfield.TextInputLayout
 import javax.inject.Inject
+import kotlin.concurrent.thread
 
 class ShopItemFragment : Fragment() {
 
@@ -58,9 +61,7 @@ class ShopItemFragment : Fragment() {
 
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View? {
         return inflater.inflate(R.layout.fragment_shop_item, container, false)
     }
@@ -144,7 +145,17 @@ class ShopItemFragment : Fragment() {
 
     private fun launchAddMode() {
         buttonSave.setOnClickListener {
-            viewModel.addShopItem(etName.text?.toString(), etCount.text?.toString())
+//            viewModel.addShopItem(etName.text?.toString(), etCount.text?.toString())
+            thread {
+                context?.contentResolver?.insert(
+                    Uri.parse("content://com.example.shoppinglist/shop_items"),
+                    ContentValues().apply {
+                        put("id", 0)
+                        put("name", etName.text?.toString())
+                        put("count", etCount.text?.toString()?.toInt())
+                        put("enabled", true)
+                    })
+            }
         }
     }
 
